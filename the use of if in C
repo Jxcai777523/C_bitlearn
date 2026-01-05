@@ -17,3 +17,57 @@ int main()
 	}
 	printf("%d", max);
 }
+
+//三角形的判断
+https://www.nowcoder.com/practice/689ec1e742394e09b1059556fc167b65?tpId=107&&tqId=33332&rp=1&ru=/ta/beginner-programmers&qru=/ta/beginner-programmers/question-ranking
+#include<stdio.h>
+int main()
+{
+	int a, b, c, t;
+	while (scanf_s("%d %d %d", &a, &b, &c) != EOF)
+	{
+			if (a < b)
+	{
+	t = a;
+	a = b;
+	b = t;
+	}
+  if (a < c)
+	{
+		t = a;
+		a = c;
+		c = t;
+	}
+	if (b < c)
+	{
+		t = b;
+		b = c;
+		c = t;
+	}
+		if (a<b+c)
+		{
+			if (a == b && b == c)
+				printf("Equilateral triangle!\n");
+			else if (a == b || a == c || b == c)
+				printf("Isosceles triangle!\n");
+			else
+				printf("Ordinary triangle!\n");
+		}
+		else
+			printf("Not a triangle!\n");
+	}
+		return 0;
+}
+
+//编写程序数一下 1到 100 的所有整数中出现多少个数字9
+#include<stdio.h>
+int main()
+{
+	int year;
+	for (year = 1000;year <= 2000;year++)
+	{
+		if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+			printf("%d ",year);
+	}
+	return 0;
+}
