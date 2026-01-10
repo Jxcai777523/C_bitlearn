@@ -1,4 +1,5 @@
-模拟实现库函数strlen#include<stdio.h>
+模拟实现库函数strlen
+#include<stdio.h>
 void my_strlen(char* str)
 {
 	/*int i = 0;
@@ -20,7 +21,8 @@ int main()
 	scanf("%s", str);
 	my_strlen(str);
 }
-写一个函数，可以逆序一个字符串的内容。#include<stdio.h>
+写一个函数，可以逆序一个字符串的内容。
+#include<stdio.h>
 #include<string.h>
 void Reverse(char* str)
 {
