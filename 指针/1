@@ -1,1 +1,45 @@
-
+模拟实现库函数strlen#include<stdio.h>
+void my_strlen(char* str)
+{
+	/*int i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	printf("%d", i);*/
+	char* start = str;
+	while (*start != '\0')
+	{
+		start++;
+	}
+	printf("%d", start - str);
+}
+int main()
+{
+	char str[100] = { 0 };
+	scanf("%s", str);
+	my_strlen(str);
+}
+写一个函数，可以逆序一个字符串的内容。#include<stdio.h>
+#include<string.h>
+void Reverse(char* str)
+{
+    char* left = str;
+    char* right = str + strlen(str) - 1;
+    while (left < right)
+    {
+        char temp = *left;
+        *left = *right;
+        *right = temp;
+        left++;
+        right--;
+    }
+}
+int main()
+{
+    char str[10000] = { 0 };
+    gets(str);
+        Reverse(str);
+        printf("%s\n", str);
+    return 0;
+}
