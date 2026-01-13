@@ -40,7 +40,7 @@ void Reverse(char* str)
 int main()
 {
     char str[10000] = { 0 };
-    gets(str);
+    gets(str);//这里不用scanf是为了防止空格不读取
         Reverse(str);
         printf("%s\n", str);
     return 0;
