@@ -1,1 +1,131 @@
 
+课堂上所讲使用函数指针数组实现转移表的代码：
+#include<stdio.h>
+int add(int a, int b)
+{
+	return a + b;
+}
+int sub(int a, int b)
+{
+	return a - b;
+}
+int mul(int a, int b)
+{
+	return a * b;
+}
+int div(int a, int b)
+{
+	return a / b;
+}
+int Func(int(*p)(int, int), int a, int b)
+{
+	int ret = p(a, b);
+	return ret;
+}
+void menu()
+{
+	printf("*********************\n");
+	printf("*** 1.加法  2.减法***\n");
+	printf("*** 3.乘法  4.除法***\n");
+	printf("***     0.退出    ***\n");
+	printf("*********************\n");
+}
+int main()
+{
+	int input;
+	int (*p_input[5])(int, int) = { 0,add,sub,mul,div };
+	do
+	{
+		menu();
+		printf("请输入选项：");
+		scanf("%d", &input);
+		if (input >= 1 && input <= 4)
+		{
+			int x, y;
+			printf("请输入两个数\n");
+			scanf("%d %d", &x, &y);
+			printf("%d\n", Func(p_input[input], x, y));
+		}
+		else if (input == 0)
+		{
+			printf("退出程序\n");
+		}
+		else
+			printf("请重新输入\n");
+	} while (input);
+	return 0;
+}
+KiKi想获得某年某月有多少天，请帮他编程实现。输入年份和月份，计算这一年这个月有多少天。
+#include<stdio.h>
+int  leapyear(int year)
+{
+	int flag = 0;
+	if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0)
+		flag = 1;
+	return flag;
+}
+int get_day(int year, int month)
+{
+	if (month == 1 || month == 3 || month == 5 || month == 7 || month == 8 || month == 10 || month == 12)
+	{
+
+		return 31;
+	}
+	if (month == 2)
+	{
+		if (leapyear(year) == 1)
+			return 29;
+		else
+			return 28;
+	}
+	else
+	{
+		return 30;
+	}
+}
+int main()
+{
+	int year, month, day;
+	while(scanf("%d%d", &year, &month)!=EOF)
+    {
+	printf("%d\n", get_day(year, month));
+    }
+	return 0;
+}
+一个数组中只有两个数字是出现一次，其他所有数字都出现了两次。
+编写一个函数找出这两个只出现一次的数字。
+例如：
+有数组的元素是：1，2，3，4，5，1，2，3，4，6
+只有5和6只出现1次，要找出5和6.
+//先对数组进行排序就很容易得出了
+#include<stdio.h>
+int main()
+{
+	int arr[] = {1,2,3,4,5,1,2,3,4,6};
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	for (int i = 0;i < sz - 1;i++)
+	{
+		for (int j = 1;j < sz - i - 1;j++)
+		{
+			if (arr[j] > arr[j + 1])
+			{
+				int tmp = 0;
+				tmp = arr[j + 1];
+				arr[j + 1] = arr[j];
+				arr[j] = tmp;
+			}
+		}
+	}
+	for (int i = 0;i < sz;i++)
+	{
+		if (arr[i] == arr[i + 1])
+		{
+			i++;
+		}
+		else
+		{
+			printf("%d ", arr[i]);
+		}
+	}
+	return 0;
+}
