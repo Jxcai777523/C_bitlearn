@@ -95,4 +95,35 @@ int main()
 	printf("%s",my_strcat(s1, s2));
 	return 0;
 }
-//strstr函数模拟实现
+//strsmp函数模拟实现
+#include<stdio.h>
+int my_strcmp(char* s1, char* s2)
+{
+	while (*s1 && *s2)
+	{
+		if (*s1 != *s2)
+		{
+			return *s1 - *s2;
+		}
+	}
+}
+	int main()
+	{
+			char s1[100] =  "I love C " ;
+			char s2[] = "and I am learning C";
+			int ret = my_strcmp(s1, s2);
+			if (ret < 0)
+			{
+					printf("%s is less than %s\n", s1, s2);
+			}
+			else if (ret > 0)
+			{
+					printf("%s is greater than %s\n", s1, s2);
+			}
+			else
+			{
+				printf("%s is equal to %s\n", s1, s2);
+			}
+			return 0;
+	}
+
