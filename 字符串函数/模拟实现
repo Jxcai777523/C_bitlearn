@@ -1,1 +1,98 @@
-
+方法一：指针-指针
+#include<stdio.h>
+int my_strlen(const char* s)
+{
+	char *p=(char*)s;
+	while (*s != '\0')
+	{
+		s++;
+	}
+	return s-p;
+}
+int main()
+{
+	char s[] = "I love C" ;
+	printf("%d",my_strlen(s));
+	return 0;
+}
+方法二：计数器
+#include<stdio.h>
+int my_strlen(const char* s)
+{
+	int count = 0;
+	while (*s != '\0')
+	{
+		count++;
+		s++;
+	}
+	return count;
+}
+int main()
+{
+	char s[] = "I love C" ;
+	printf("%d",my_strlen(s));
+    return 0；
+}
+方法三：递归实现：
+#include<stdio.h>
+int my_strlen(const char* s)
+{
+	if (*s == '\0')
+	{
+		return 0;
+	}
+	else
+	{
+		return 1 + my_strlen(s + 1);
+	}
+}
+int main()
+{
+	char s[] = "I love C";
+	printf("%d",my_strlen(s));
+}
+//strcpy函数的模拟实现
+#include<stdio.h>
+#include<assert.h>
+char* my_strcpy(char* dst, const char* src)
+{
+	char* ret=dst;
+	assert(dst != NULL && src != NULL);
+	/*while (*dst++ = *src++)
+		;
+	return ret;*/
+	while (*src != '\0')
+	{
+		*dst++ = *src++;
+	}
+	*dst = '\0';
+	return ret;
+}
+int main()
+{
+	char s1[] = "I love C";
+	char s2[50] = { 0 };
+	char* ret=my_strcpy(s2, s1);
+	printf("%s", ret);
+}
+//strcat函数的模拟实现
+#include<stdio.h>
+#include<assert.h>
+char* my_strcat( char* s1, const char* s2)
+{
+	assert(s1 && s2 != NULL);
+	char* ret = s1;
+	while (*s1!='\0')
+		s1++;
+	while ((*s1++ = *s2++))
+		;
+	return ret;
+}
+int main()
+{
+	char s1[100] =  "I love C " ;
+	char s2[] = "and I am learning C";
+	printf("%s",my_strcat(s1, s2));
+	return 0;
+}
+//strstr函数模拟实现
