@@ -95,7 +95,7 @@ int main()
 	printf("%s",my_strcat(s1, s2));
 	return 0;
 }
-//strsmp函数模拟实现
+//strcmp函数模拟实现
 #include<stdio.h>
 int my_strcmp(char* s1, char* s2)
 {
@@ -126,4 +126,39 @@ int my_strcmp(char* s1, char* s2)
 			}
 			return 0;
 	}
+//strstr函数的模拟实现
+#include<stdio.h>
+char* my_strstr(const char* s1, const char* s2)
+{
+	if (!s1 || !s2)
+	{
+		return NULL;
+	}
+	char* p1=NULL;
+	char* p2=NULL;
+	char* curr = s1;
+	while (*curr)
+	{
+		p1 = curr;
+		p2 = s2;
+		while (*p1 && *p2 && (*p1 == *p2))
+		{
+			p1++;
+			p2++;
+		}
+		if (*p2 == '\0')
+		{
+			return curr;
+		}
+		curr++;
+	}
+	return NULL;
 
+}
+int main()
+{
+	char s1[] = "hello world";
+	char s2[] = "world";
+	printf("%s",my_strstr(s1, s2));
+	return 0;
+}
