@@ -162,3 +162,42 @@ int main()
 	printf("%s",my_strstr(s1, s2));
 	return 0;
 }
+//strncop模拟实现
+#include<stdio.h>
+char* my_strncpy(char* dest, const char* src, size_t num)
+{
+	char* ret = dest;
+	while (num--)
+	{
+		*dest++ = *src++;
+		if ((*src||*dest) == '\0')
+			break;
+	}
+	return ret;
+}
+int main()
+{
+	char s1[] = "hello world";
+	char s2[] = "********";
+	printf("%s", my_strncpy(s2, s1, 5));
+}
+//strncat模拟实现
+#include<stdio.h>
+#include<assert.h>
+char* my_strncat( char* s1, const char* s2,size_t num)
+{
+	assert(s1 && s2 != NULL);
+	char* ret = s1;
+	while (*s1!='\0')
+		s1++;
+	while (s1&&s2&&num--)
+		*s1++ = *s2++;
+	return ret;
+}
+int main()
+{
+	char s1[100] =  "I love C " ;
+	char s2[] = "and I am learning C";
+	printf("%s",my_strncat(s1, s2,18));
+	return 0;
+}
