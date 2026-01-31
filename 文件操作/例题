@@ -1,1 +1,81 @@
+练习使用上课所学文件操作的相关函数提交，练习代码即可
+#include<stdio.h>
+int main()
+{
+	FILE *p=fopen("test.txt", "w");
+	if (p == NULL)
+	{
+		perror(fopen);
+		return 1;
+	}
+	fwrite("Hello, world!\n", 1, 13, p);
+	fclose(p);
+	p == NULL;
+	return 0;
+}
+#include<stdio.h>
+int main()
+{
+	FILE* p=fopen("test.txt", "w");
+	if (p == NULL)
+	{
+		perror(fopen);
+	}
+	for (char i = 'a';i <= 'z';i++)
+	{
+		fputc(i, p);//输出到文本中
+	}
+	fclose(p);
+	p = NULL;
+	return 0;
+}
+#include<stdio.h>
+int main()
+{
+	FILE* p = fopen("test.txt", "r");
+	if (p == NULL)
+		{
+			perror(fopen);
+		}
+	int ch;
+	while ((ch = fgetc(p)) != EOF)
+	{
+		printf("%c", ch);
+	}
+	p = NULL;
+	return 0;
+}
+#include<stdio.h>
+int main()
+{
+	FILE *p=fopen("test.txt", "w");
+	if (p == NULL)
+	{
+		perror(fopen);
+		return 1;
+	}
+	fputs("hello world", p);
+	fclose(p);
+	p == NULL;
+	return 0;
+}
+#include<stdio.h>
+int main()
+{
+	FILE *p=fopen("test.txt", "r");
+	if (p == NULL)
+	{
+		perror(fopen);
+		return 1;
+	}
+	char arr[20];
+	while (fgets(arr, 20, p))
+	{
+		printf("%s", arr);
+	}
+	fclose(p);
+	p == NULL;
+	return 0;
+}
+
 
