@@ -1,1 +1,8 @@
-
+写一个宏，可以将一个整数的二进制位的奇数位和偶数位交换。
+#include<stdio.h>
+#define Swap(a) (((a&0X55555555)<<1)|((a&0XAAAAAAAA)>>1))
+int main()
+{
+	printf("%d", Swap(10));
+	return 0;
+}
