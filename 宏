@@ -6,3 +6,19 @@ int main()
 	printf("%d", Swap(10));
 	return 0;
 }
+写一个宏，计算结构体中某变量相对于首地址的偏移，并给出说明
+#include<stdio.h>
+#include<stddef.h>
+struct S
+{
+	int a;
+	char b;
+};
+#define my_offsetof(type,num) ((size_t)&(((type*)0)->num))
+int main()
+{
+    struct S s = { 1, 'a' };
+	int ret1=my_offsetof(struct S, a); 
+	int ret2=my_offsetof(struct S, b);
+	printf("%d %d", ret1, ret2);
+}
